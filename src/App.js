@@ -48,37 +48,60 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <h2>Lottery Contract</h2>
-        <p>This contract is managed by {this.state.manager}</p>
-        <p>
-          There are currently {this.state.players.length} people entered,
-          competing to win {web3.utils.fromWei(this.state.balance, "ether")}{" "}
-          ether!
-        </p>
+      <div
+        style={{
+          width: "610px",
+          border: "1px solid black",
+          borderRadius: "20px",
+          backgroundColor: "#f6f8fa",
+          textAlign: "center"
+        }}
+      >
+        <div style={{ marginLeft: "10px", marginRight: "10px" }}>
+          <h2 style={{ color: "#0366d6" }}>Lottery Contract</h2>
+          <p>
+            This contract is managed by{" "}
+            <label id="manager">{this.state.manager}</label>.
+          </p>
+          <p>
+            There are currently{" "}
+            <label id="playersLenght">{this.state.players.length}</label> people
+            entered, competing to win{" "}
+            <label id="balance">
+              {web3.utils.fromWei(this.state.balance, "ether")}
+            </label>{" "}
+            ether!
+          </p>
 
-        <hr />
+          <hr />
 
-        <form onSubmit={this.onSubmit}>
-          <h4>Want to try your luck?</h4>
-          <div>
-            <label>Amount of ether to enter </label>
-            <input
-              value={this.state.value}
-              onChange={event => this.setState({ value: event.target.value })}
-            />
-          </div>
-          <button>Enter</button>
-        </form>
+          <form onSubmit={this.onSubmit}>
+            <h4>Want to try your luck?</h4>
+            <div>
+              <label>Amount of ether to enter => </label>
+              <input
+                style={{ width: "40px" }}
+                value={this.state.value}
+                onChange={event => this.setState({ value: event.target.value })}
+              />
+            </div>
+            <br />
+            <button className="button" id="enter">
+              Enter
+            </button>
+            <br />
+            <br />
+          </form>
 
-        <hr />
+          <hr />
 
-        <h4>Ready to pick a winner?</h4>
-        <button onClick={this.onClick}>Pick a winner!</button>
+          <h4>Ready to pick a winner?</h4>
+          <button className="button" onClick={this.onClick}>
+            Pick a Winner!
+          </button>
 
-        <hr />
-
-        <h1>{this.state.message}</h1>
+          <h1>{this.state.message}</h1>
+        </div>
       </div>
     );
   }
